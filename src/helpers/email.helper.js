@@ -1,6 +1,13 @@
 var jwt = require('jsonwebtoken'),
 nodemailer = require('nodemailer'),
-transporter = nodemailer.createTransport('smtps://cloud@wildapplications.com%40gmail.200717GRAD$@smtp.gmail.com');
+transporter = nodemailer.createTransport({
+  service: 'gmail',
+  host: 'smtp.gmail.com',
+  auth: {
+    user: 'cloud@wildapplications.com',
+    pass: '200717GRAD'
+  }
+});
 
 var emailer = {};
 
