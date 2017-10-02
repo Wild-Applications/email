@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package authentication;
+package email;
 
 //Methods exposed to client
-service AuthenticationService {
+service EmailService {
   rpc send (EmailRequest) returns (EmailReply){}
 }
 
