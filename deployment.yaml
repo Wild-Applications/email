@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: email
+  labels:
+   name: email
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: deployment
+  namespace: email
+  labels:
+    app: email
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: email
+    spec:
+      containers:
+      - name: email
+        image: wildapplications/email:latest
+        ports:
+        - containerPort: 50051
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+  namespace: email
+  labels:
+    app: email
+spec:
+  type: ClusterIP
+  ports:
+  - port: 1295
+    targetPort: 50051
+  selector:
+    app: email
+  externalName: email
