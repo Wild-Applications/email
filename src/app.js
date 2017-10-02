@@ -3,7 +3,7 @@
 //Imports
 const grpc = require('grpc');
 const emailhelper = require('./helpers/email.helper.js');
-const proto = grpc.load(__dirname + '/proto/authentication.proto');
+const proto = grpc.load(__dirname + '/proto/email.proto');
 const server = new grpc.Server();
 
 //define the callable methods that correspond to the methods defined in the protofile
