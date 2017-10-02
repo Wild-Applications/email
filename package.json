@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "grpc": "^1.6.0",
-    "nodemailer": "^4.1.1"
+    "nodemailer": "^4.1.1",
+    "jsonwebtoken": "^7.4.1"
   }
 }
