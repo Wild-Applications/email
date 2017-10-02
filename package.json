@@ -10,6 +10,7 @@
   "author": "Wild Applications - Michael Wild",
   "license": "ISC",
   "dependencies": {
+    "grpc": "^1.6.0",
     "nodemailer": "^4.1.1"
   }
 }
