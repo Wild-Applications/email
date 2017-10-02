@@ -2,7 +2,7 @@
 
 //Imports
 const grpc = require('grpc');
-const emailhelper = require('./helpers/email.helper.js');
+const emailHelper = require('./helpers/email.helper.js');
 const proto = grpc.load(__dirname + '/proto/email.proto');
 const server = new grpc.Server();
 
