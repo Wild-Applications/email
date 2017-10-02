@@ -12,6 +12,7 @@ transporter = nodemailer.createTransport({
 var emailer = {};
 
 emailer.send = function(call, callback){
+  console.log('Send request received');
   var options = {
     to: call.request.recipient,
     subject: call.request.subject,
