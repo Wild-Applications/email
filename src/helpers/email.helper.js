@@ -4,8 +4,13 @@ transporter = nodemailer.createTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
   auth: {
-    user: 'cloud@wildapplications.com',
-    pass: '200717GRAD'
+    XOAuth2: {
+        user: "michael@wildapplications.com",
+        clientId: "953798993030-12aaeh3m9utpt90pgmmisus1c3ngjg8m.apps.googleusercontent.com",
+        clientSecret: "YmufwTFNbsUt3dUWX9QVVeVu",
+        refreshToken: "1/6GMTqY3Nu1mVgeZwswa_5KBPout6wFENmlFhSZRmm5t2W1j2Nm-1Wfv-SG3p0abT",
+        timeout: 3600
+    }
   }
 });
 
