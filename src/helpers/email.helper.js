@@ -1,34 +1,31 @@
-var jwt = require('jsonwebtoken'),
-nodemailer = require('nodemailer'),
-transporter = nodemailer.createTransport({
-  service: 'gmail',
-  host: 'smtp.gmail.com',
-  auth: {
-    XOAuth2: {
-        user: "michael@wildapplications.com",
-        clientId: "953798993030-12aaeh3m9utpt90pgmmisus1c3ngjg8m.apps.googleusercontent.com",
-        clientSecret: "YmufwTFNbsUt3dUWX9QVVeVu",
-        refreshToken: "1/6GMTqY3Nu1mVgeZwswa_5KBPout6wFENmlFhSZRmm5t2W1j2Nm-1Wfv-SG3p0abT",
-        timeout: 3600
+var google = require('googleapis');
+var gmail = google.gmail('v1');
+var key = require('../data/client_secret.json');
+var oAuthClient = new google.auth.JWT(
+    key.client_email,
+    null,
+    key.private_key,
+    ['https://www.googleapis.com/auth/gmail.send'],
+    null
+);
+
+var message = new Buffer(
+    "Content-Type: text/plain; charset=\"UTF-8\"\n" +
+    "MIME-Version: 1.0\n" +
+    "Content-Transfer-Encoding: 7bit\n" +
+    "To: mwild95@live.co.uk\n" +
+    "From: <some email>\n" +
+    "Subject: something something lol\n\n" +
+    "heyheyhey"
+).toString('base64').replace(/\+/g, '-').replace(/\//g, '_');
+
+gmail.users.messages.send({
+    auth: oAuthClient,
+    userId: 'noreply@wildapplications.com',
+    resource: {
+        raw: message
     }
-  }
+}, function(err, resp) {
+    console.log('err', err);
+    console.log('resp', resp);
 });
-
-var emailer = {};
-
-emailer.send = function(call, callback){
-  console.log('Send request received');
-  var options = {
-    to: call.request.recipient,
-    subject: call.request.subject,
-    text: call.request.content
-  };
-  transporter.sendMail(options, function(error, response){
-    if(error){
-      return callback({message: JSON.stringify(error)}, null);
-    }
-    callback(null, {result: true});
-  });
-}
-
-module.exports = emailer;
