@@ -37,6 +37,7 @@ function sendEmail(call, callback){
     }
   }, function(err, response){
     if(err){
+      console.log(err);
       callback({message:JSON.stringify(err)}, null);
     }else{
       callback(null, {result: true})
