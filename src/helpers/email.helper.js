@@ -33,7 +33,7 @@ function sendEmail(call, callback){
     auth: oAuthClient,
     userId: 'me',
     resource: {
-      raw: message
+      raw: bufferedMessage
     }
   }, function(err, response){
     if(err){
