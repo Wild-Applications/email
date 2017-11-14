@@ -46,7 +46,7 @@ function sendEmail(call, callback){
 }
 
 
-
+module.exports = emailer;
 
 //code for debugging
 /*
