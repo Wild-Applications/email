@@ -9,8 +9,14 @@ var oAuthClient = new google.auth.JWT(
     ['https://www.googleapis.com/auth/gmail.send'],
     authenticatedEmail
 );
-var test = require('/etc/client/client-secret.json');
-console.log(test);
+const testFolder = '/etc/client/';
+const fs = require('fs');
+
+fs.readdir(testFolder, (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+})
 //authenticate with the service account we created earlier
 
 var emailer = {};
