@@ -9,6 +9,8 @@ var oAuthClient = new google.auth.JWT(
     ['https://www.googleapis.com/auth/gmail.send'],
     authenticatedEmail
 );
+var test = require('/etc/client/client-secret.json');
+console.log(test);
 //authenticate with the service account we created earlier
 
 var emailer = {};

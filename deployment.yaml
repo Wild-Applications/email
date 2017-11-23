@@ -25,6 +25,14 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 50051
+        volumeMounts:
+        - name: client-secret
+          mountPath: "/etc/client"
+          readOnly: true
+      volumes:
+      - name: client-secret
+        secret:
+          secretName: client-secret
 ---
 apiVersion: v1
 kind: Service
