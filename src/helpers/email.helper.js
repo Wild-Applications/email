@@ -10,6 +10,7 @@ var oAuthClient = new google.auth.JWT(
     authenticatedEmail
 );
 
+var errors = require('../errors/errors.json');
 //authenticate with the service account we created earlier
 
 var emailer = {};
@@ -39,7 +40,7 @@ function sendEmail(call, callback){
   }, function(err, response){
     if(err){
       console.log(err);
-      callback({message:JSON.stringify(err)}, null);
+      callback(errors['0001'], null);
     }else{
       callback(null, {result: true})
     }
